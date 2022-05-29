@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 const priceRouter = require("./routes/price");
 const MongoDB = require("./config/db");
+const path = require("path");
 
 MongoDB();
 
@@ -11,6 +12,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const port = 5000 || process.env.PORT;
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("*", (req, res) => {
+    app.sendFile(path.resolve(__dirname, "fontend","build","index.html"));
+  });
+}
 
 app.use(
   cors({
