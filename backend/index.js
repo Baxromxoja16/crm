@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extended: true }));
 const port = 5000 || process.env.PORT;
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/build"));
+  app.use(express.static("client/build"));
   app.get("*", (req, res) => {
-    app.sendFile(path.resolve(__dirname, "fontend","build","index.html"));
+    res.sendFile(path.resolve(__dirname, "client","build","index.html"));
   });
 }
 
