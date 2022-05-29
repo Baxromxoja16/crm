@@ -61,7 +61,8 @@ function App() {
           />
           <div className="justify-content-between d-flex align-content-center border border-primary col-3 fs-4 ">
             {" "}
-            <p>Umumiy foyda:</p> <p>{umumiyOne}</p>
+            <p>Umumiy foyda: </p> <p> {umumiyOne} </p>
+            <p>O'xshadi</p> 
           </div>
         </div>
       </div>
