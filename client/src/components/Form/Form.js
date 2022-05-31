@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Form({ setEndPrice, setOldPrice }) {
+export default function Form({ submitHandler, setEndPrice, setOldPrice }) {
   return (
-    <form className=" ">
+    <form className="" onSubmit={submitHandler}>
       <label className="input-group-text" htmlFor="oldPrice">
         Oldingi narx
       </label>

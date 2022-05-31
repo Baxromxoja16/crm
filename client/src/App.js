@@ -17,13 +17,20 @@ function App() {
   const [currentId, setCurrentId] = useState();
   const [oldPrice, setOldPrice] = useState("");
   const [endPrice, setEndPrice] = useState("");
-  
+
   const [umumiyOne, setUmumiyOne] = useState("");
 
   useEffect(() => {
-    fetch("/api/price")
+    fetch("/api/price", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+
+    })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setUmumiyOne(data.umumiy);
         setBarchaMalumotlar(data.data);
       });
@@ -47,11 +54,11 @@ function App() {
   };
 
   return (
-    <div className="App" onSubmit={submitHandler}>
+    <div className="App" >
       <div className="container mt-5">
         <div className="row">
           <div className="col-lg-4">
-            <Form setOldPrice={setOldPrice} setEndPrice={setEndPrice} />
+            <Form submitHandler={submitHandler} setOldPrice={setOldPrice} setEndPrice={setEndPrice} />
           </div>
 
           <Item
@@ -62,7 +69,7 @@ function App() {
           <div className="justify-content-between d-flex align-content-center border border-primary col-3 fs-4 ">
             {" "}
             <p>Umumiy foyda: </p> <p> {umumiyOne} </p>
-            <p>O'xshadi</p> 
+            <p>O'xshadi</p>
           </div>
         </div>
       </div>
